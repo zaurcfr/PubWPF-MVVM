@@ -29,13 +29,40 @@ namespace PubWPF_MVVM.ViewModels
             set { _drink = value; OnPropertyChanged(); }
         }
 
-        public RelayCommand SelectionChangedCommand { get; set; }
+        private int _count;
 
+        public int Count
+        {
+            get { return _count; }
+            set { _count = value; OnPropertyChanged(); }
+        }
+
+
+        public RelayCommand SelectionChangedCommand { get; set; }
+        public RelayCommand IncreaseCommand { get; set; }
+        public RelayCommand DecreaseCommand { get; set; }
 
         public MainViewModel()
         {
             DrinkRepo = new Repository();
             Drinks = new ObservableCollection<Drink>(DrinkRepo.GetDrinks());
+
+            IncreaseCommand = new RelayCommand(
+                (e) =>
+                {
+                    Count++;
+                });
+
+            DecreaseCommand = new RelayCommand(
+                (e) =>
+                {
+                    Count--;
+                },
+                (c) =>
+                {
+                    if (Count > 0) return true;
+                    return false;
+                });
 
         }
 

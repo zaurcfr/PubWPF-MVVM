@@ -84,6 +84,36 @@
                 <TextBlock Style="{StaticResource Txtblock}" Name="VolumeTxtblock" Text="{Binding Drink.Volume}"></TextBlock>
                 <Label Style="{StaticResource Lbl}" Name="PriceLbl" Content="Price: "></Label>
                 <TextBlock Style="{StaticResource Txtblock}" Name="PriceTxtblock" Text="{Binding Drink.Price}"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <Button 
+                        Name="DecreaseBtn"
+                        Height="50" 
+                        Margin="10"
+                        Command="{Binding DecreaseCommand}">
+                        <Image Source="/Images/decrease.png"></Image>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="40"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                    <TextBlock Style="{StaticResource Txtblock}" TextAlignment="Center" VerticalAlignment="Center" Margin="10" Text="{Binding Count,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                    
+                    <Button 
+                        Name="IncreaseBtn"
+                        Height="50" 
+                        Margin="10"
+                        Command="{Binding IncreaseCommand}">
+                        <Image Source="/Images/increase.png"></Image>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="40"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                </StackPanel>
             </StackPanel>
 
         </Grid>
