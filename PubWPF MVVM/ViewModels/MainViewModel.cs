@@ -37,10 +37,20 @@ namespace PubWPF_MVVM.ViewModels
             set { _count = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<Drink> _soldDrinks;
+
+        public ObservableCollection<Drink> SoldDrinks
+        {
+            get { return _soldDrinks; }
+            set { _soldDrinks = value; }
+        }
+
+
 
         public RelayCommand SelectionChangedCommand { get; set; }
         public RelayCommand IncreaseCommand { get; set; }
         public RelayCommand DecreaseCommand { get; set; }
+        public RelayCommand BuyCommand { get; set; }
 
         public MainViewModel()
         {
@@ -64,6 +74,19 @@ namespace PubWPF_MVVM.ViewModels
                     return false;
                 });
 
+            BuyCommand = new RelayCommand(
+                (e) =>
+                {
+                    try
+                    {
+                        SoldDrinks.Add(Drink);
+                        MessageBox.Show($"Total price is ${Count * Drink.Price}");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Drink not selected");
+                    }
+                });
         }
 
 

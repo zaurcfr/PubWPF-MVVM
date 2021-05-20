@@ -119,7 +119,7 @@
         </Grid>
         
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Style="{StaticResource Btn}"  Width="150" Margin="57,5" Content="Buy"></Button>
+            <Button Style="{StaticResource Btn}"  Width="150" Margin="57,5" Content="Buy" Command="{Binding BuyCommand}"></Button>
             <Button Style="{StaticResource Btn}"  Width="150" Margin="57,5" Content="Clear"></Button>
             <Button Style="{StaticResource Btn}"  Width="150" Margin="57,5" Content="History"></Button>
         </StackPanel>
